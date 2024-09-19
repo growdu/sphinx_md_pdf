@@ -57,6 +57,7 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 #html_css_files = ['custom.css']
 extensions = [
+    'custom_sytax',
     'myst_parser',
     'html_to_latex',
 ]
@@ -80,4 +81,14 @@ html_context = {
 myst_enable_extensions = [
     "html_admonition",
     "html_image",  # 支持 HTML 标签
+    # 智能引号与替换件
+    "smartquotes","replacements",
+    # 冒号的代码围栏
+    "colon_fence",
+    # 链接
+    "linkify",
+    # 替换
+    "substitution",
+    # 任务列表
+    "tasklist"
 ]
