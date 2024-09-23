@@ -7,9 +7,9 @@ class HTMLTableToLaTeX(SphinxDirective):
     has_content = True
 
     def run(self):
-        logging.info("HTML to LaTeX directive triggered.")
+        #logging.info("HTML to LaTeX directive triggered.")
         html_content = "\n".join(self.content)
-        logging.info(f"Received HTML content: {html_content}")
+        #logging.info(f"Received HTML content: {html_content}")
 
         latex_code = self.convert_html_tables_to_latex(html_content)
 
@@ -47,7 +47,7 @@ class HTMLTableToLaTeX(SphinxDirective):
         rowspan_tracker = [0] * max_columns
 
         for i, row in enumerate(rows):
-            logging.debug(f"Processing row {i}: {row}")
+            #logging.debug(f"Processing row {i}: {row}")
             cols = row.find_all(['th', 'td'])
             col_idx = 0  # 列索引
 
@@ -62,7 +62,7 @@ class HTMLTableToLaTeX(SphinxDirective):
 
                 # 检查并处理跨行单元格
                 while rowspan_tracker[col_idx] > 0:
-                    logging.debug(f"Skipping column {col_idx} due to rowspan.")
+                    #logging.debug(f"Skipping column {col_idx} due to rowspan.")
                     latex_row.append("")  # 填充空位
                     col_idx += 1
 
@@ -71,7 +71,7 @@ class HTMLTableToLaTeX(SphinxDirective):
                     latex_row.append(f"\\multicolumn{{{colspan}}}{{{self.get_multicolumn_format(col_idx, colspan, max_columns)}}}{{{text}}}")
                 elif rowspan > 1:
                     # 处理跨行并保持边框控制
-                    logging.debug(f"Applying rowspan in column {col_idx}, spanning {rowspan} rows.")
+                    #logging.debug(f"Applying rowspan in column {col_idx}, spanning {rowspan} rows.")
                     latex_row.append(f"\\multirow{{{rowspan}}}{{*}}{{\\centering {text}}}")
                     rowspan_tracker[col_idx] = rowspan  # 标记此列需要跨行
                 else:
@@ -84,11 +84,11 @@ class HTMLTableToLaTeX(SphinxDirective):
                 col_idx += 1
 
             latex += " & ".join(latex_row) + " \\\\\n"
-            logging.debug(f"Latex row generated: {' & '.join(latex_row)}")
+            #logging.debug(f"Latex row generated: {' & '.join(latex_row)}")
 
             for j in range(len(rowspan_tracker)):
                 if rowspan_tracker[j] > 0:
-                    logging.debug(f"Reducing rowspan tracker at column {j}.")
+                    #logging.debug(f"Reducing rowspan tracker at column {j}.")
                     rowspan_tracker[j] -= 1
 
             # 如果当前行有跨行的单元格，部分列不应该绘制表格线，使用 \cline 控制
@@ -106,16 +106,17 @@ class HTMLTableToLaTeX(SphinxDirective):
                     cline_ranges.append(f"{start}-{columns_with_rowspan[-1]}")
                     cline_string = " ".join([f"\\cline{{{r}}}" for r in cline_ranges])
                     latex += f"{cline_string}\n"
-                    logging.debug(f"Adding \\cline for columns {cline_ranges}.")
+                    #logging.debug(f"Adding \\cline for columns {cline_ranges}.")
             else:
                 latex += "\\hline\n"
-                logging.debug(f"Adding \\hline for row {i}.")
+                #logging.debug(f"Adding \\hline for row {i}.")
 
 
         latex += "\\end{tabular}"
 
         return latex
 
+    
     def get_alignment_from_style(self, style):
         """根据HTML中的样式信息获取文本对齐方式"""
         if "text-align: right" in style:
@@ -137,8 +138,8 @@ class HTMLTableToLaTeX(SphinxDirective):
             return "c"  # 中间列不保留边线
 
 def setup(app):
-    logging.basicConfig(level=logging.DEBUG)  # Enable detailed logging for debugging
-    logging.info("html_to_latex plugin has been loaded.")
+    #logging.basicConfig(level=logging.debug)  # Enable detailed logging for debugging
+    #logging.info("html_to_latex plugin has been loaded.")
     app.add_directive("html-to-latex", HTMLTableToLaTeX)
     app.connect('builder-inited', add_latex_macros)
 
