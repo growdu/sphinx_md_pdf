@@ -60,6 +60,7 @@ extensions = [
     'custom_sytax',
     'myst_parser',
     'html_to_latex',
+    'custom_table_width'
 ]
 source_suffix = {
     '.rst': 'restructuredtext',
@@ -72,6 +73,7 @@ latex_elements = {
         \setCJKmainfont{SimSun}
         \usepackage{longtable}
         \usepackage{booktabs}
+        \usepackage{tabularx}
     ''',
 }
 html_context = {
