@@ -11,6 +11,7 @@ Welcome to sphinx-test's documentation!
    :caption: Contents:
    
    test.md
+   intro.md
 
 
 
