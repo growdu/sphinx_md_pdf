@@ -261,25 +261,39 @@ select * from pg_stat_replication;
 
 自定义宽度表格示例1
 
-```{table-width}
-:width: 100%
-:columns: 30% 30% 40%
+```{table}
+:widths: 6 1 1
+:class: longtable
 ```
 | Header 1 | Header 2 | Header 3 |
 |----------|----------|----------|
-| The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.   | The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.   | Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.   |
+| row11   | row12   | row13 |
+| row21   | row22   | row23 |
 
 示例结束。
 
-
 自定义宽度表格示例2
 
-```{table-width}
-:width: 80%
-:columns: 60% 10% 30%
+```{table}
+:widths: 3 4 4
+:class: longtable
 ```
 | Header 1 | Header 2 | Header 3 |
 |----------|----------|----------|
-| The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.   | The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.   | Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.   |
+| The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.   | The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.   | row13 |
+| row21   | The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.   | row23 |
+
+示例结束。
+
+自定义宽度表格示例2
+
+```{table}
+:widths: 5 4 1
+:class: longtable
+```
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.   | The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.   | row13 |
+| row21   | The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.   | row23 |
 
 示例结束。

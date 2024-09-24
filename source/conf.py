@@ -60,7 +60,7 @@ extensions = [
     'custom_sytax',
     'myst_parser',
     'html_to_latex',
-    'custom_table_width'
+    #'table-markdown'
 ]
 source_suffix = {
     '.rst': 'restructuredtext',
@@ -70,7 +70,7 @@ latex_engine = 'xelatex'  # 或 'lualatex'
 latex_elements = {
     'preamble': r'''
         \usepackage[UTF8]{ctex}
-        \setCJKmainfont{SimSun}
+        \setCJKmainfont{WenQuanYi Zen Hei}
         \usepackage{longtable}
         \usepackage{booktabs}
         \usepackage{tabularx}
